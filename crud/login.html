@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Accueil</title>
+</head>
+<body>
+
+    <div class="LoginBox">
+       <h2>Connexion</h2>
+       <form>
+     <div class="UserBox">
+             <input type="text" name="" id="" placeholder="Email" >
+             </div>
+    <div class="Userboxx">
+             <input type="password" name="" id="" placeholder="Mot de Passe">
+         </div>
+               <div class="ButtonBox">
+           <a href="#" id="submit" >Se Connecter</a>
+           </div>
+               </br>
+                <a class="button" href="inscrire.html">S'inscrire</a>
+         </div>
+
+
+      </form>
+    </div>
+    <script>
+
+        let myForm = document.getElementById('msForm');
+        
+        
+        myForm.addEventListener('submit' , function(e){
+            let myemail = document.getElementById('email');
+            let mypass = document.getElementById('pass');
+            let mycpass = document.getElementById('cpass');
+           
+          if(myemail.value =='')
+          {
+            let error = document.getElementById('emailerror');
+            error.innerHTML = "Le champs email est requis";
+            error.style.color = 'red';
+            e.preventDefault();
+          }  
+          if(mypass.value =='')
+          {
+            let error = document.getElementById('passerror');
+            error.innerHTML = "Le champs password est requis";
+            error.style.color = 'red';
+            e.preventDefault();
+          }
+          if(mycpass.value =='')
+          {
+            let error = document.getElementById('cpasserror');
+            error.innerHTML = "il faut confirmer votre password";
+            error.style.color = 'red';
+            e.preventDefault();
+          }
+          
+        })
+        
+              </script>
+</body>
+</html>

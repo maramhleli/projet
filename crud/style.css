@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,700&display=swap');
+
+
+/*font-family: 'Roboto', sans-serif;*/
+/*font-family: 'Nunito Sans', sans-serif;*/
+:root {
+    --font-style: 'Nunito Sans', sans-serif;  /* Definir comme une variable pour l'utilisé*/
+}
+*{
+    box-sizing: border-box ;
+}
+body{     /* Le style pour tous le BODY */
+     background-color: #fff;     /*Background Color */
+     font-family: var(--font-style) ;       /* utilisation comme une variable pour tous les textes du BODY */
+}
+.LoginBox{
+     position: absolute;
+     top: 45%;
+     left: 50%;
+     width: 500px;
+     height: 500px;
+     padding: 87px;
+     transform: translate(-50%,-50%) ;
+     background-color: #f77c0a ;
+     box-shadow:  0 0 25px rgba(248, 232, 7, 0.837);
+     border-radius: 10px;
+} 
+.LoginBox h2{
+    margin: -10px 0 30px ;
+    padding: 0  ;
+    font-size:190%;
+    color:#fff ;
+    text-align: center;
+}
+.LoginBox .UserBox input{
+    position: relative;
+    width: 100%;
+    padding:10px 0 ;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom:30px ;
+    border: none;
+    border-bottom:1px solid #fff;
+    outline: none;
+    background: transparent;
+}
+
+.LoginBox .Userboxx input{
+    position: relative;
+    width: 100%;
+    padding:10px 0 ;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom:30px ;
+    border: none;
+    border-bottom:1px solid #fff;
+    outline: none;
+    background: transparent;
+}
+
+.LoginBox .Userboxx label{
+    position: relative;
+    left: 0;
+    top: -60px;
+    padding:10px 0;
+    font-size: 16px ;
+    color:#fff ;
+    pointer-events:none ;
+    transition: .5s;
+}
+.LoginBox .Userboxx input:focus~label,
+.LoginBox .Userboxx input:valid~label{
+    top:-85px ;
+    left: 0;
+    color: #fff;
+    font-size:12px ;
+}
+#submit{
+padding: 10px 20px  ;
+color: #f0efec  ;
+font-size: 16px;
+text-decoration:none ;
+text-align: center;
+text-transform: uppercase;
+overflow: hidden;
+transition: .5s;
+letter-spacing:4px ;
+border: 1px solid #e1ec7c ;
+margin: auto;
+}
+
+#submit :hover{
+    background-color:#fff ;
+    color:#fff ;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #cfe2da , 0 0 25px #f0efec , 0 0 50px#f0efec, 0 0 100px #f0efec;
+}
+
+
+.ButtonBox{
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    
+}
+.button{
+    padding: 10px 20px;
+    background:rgb(253, 252, 250);
+    margin-top:4px;
+    top:400px;
+    right:200px;
+    position:absolute;
+  }
+  .button:hover{
+    background-color:rgb(234, 238, 14);
+    transition:ease-out;
+    
+  }
+ fieldset{
+    margin-top: 70px;
+    width: 27%;
+    background-color: #f77c0a;
+    box-shadow : 5px 5px 20px 1px 10px rgb(250, 246, 7);
+    border: 0px;
+    padding-left:10px;
+    border-radius: 10px 10px 10px 10px ;
+    color:white;
+    height:430;
+
+ }
+ td{letter-spacing: 1px;}
+ h1{
+    font-family: andalus;
+    letter-spacing :3px;
+    text-align: center ;
+    color: white;
+ }
+ hr{
+    border: 5px solid white ;
+    border-radius: 10px;
+    width:40%;
+ }
+
+
+
