@@ -1,46 +1,8 @@
-<?php
 
-include '../controller/avis_offresC.php';
 
-$error = "";
-
-// create client
-$avis_offres = null;
-
-// create an instance of the controller
-$avis_offresC = new avis_offresC();
-if (
-    isset($_POST["nom"]) &&
-    isset($_POST["email"]) &&
-    isset($_POST["message"]) &&
-    isset($_POST["id_offres"])
-
-) {
-    if (
-        !empty($_POST["nom"]) &&
-        !empty($_POST["email"]) &&
-        !empty($_POST["message"]) &&
-        !empty($_POST["id_offres"]) 
-        
-    ) {
-        $avis_offres = new avis_offres(
-            $_POST['nom'],
-            $_POST['email'],
-            $_POST['message'],
-            $_POST['id_offres']
-            
-        );
-        $avis_offresC->updateavis_offres($avis_offres, $_POST["id_avis"]);
-        header('Location:Listavis_offres.php');
-    } else
-        $error = "Missing information";
-}
-?>
+<!DOCTYPE html>
 <html lang="en">
-
-<html>
-
-<head>
+   <head>
       
       <!-- basic -->
       <meta charset="utf-8">
@@ -58,7 +20,7 @@ if (
       <!-- bootstrap css -->
       <link rel="stylesheet" href="css/bootstrap.min.css" />
       <!-- site css -->
-      <link rel="stylesheet" href="style3.css" />
+      <link rel="stylesheet" href="style.css" />
       <!-- responsive css -->
       <link rel="stylesheet" href="css/responsive.css" />
       <!-- color css -->
@@ -195,78 +157,206 @@ if (
                   </nav>
                </div>
                <!-- end topbar -->
-            
-    <button><a href="Listavis_offres.php">Back to list</a></button>
-
-    <div id="error">
-        <?php echo $error; ?>
-    </div>
-
-    <?php
-    if (isset($_POST['id_avis'])) {
-        $avis_offres = $avis_offresC->showavis_offres($_POST['id_avis']);
-    }
-    ?>
-
-        <form action="" method="POST">
-            <table>
+               <!-- dashboard inner -->
+               <div class="midde_cont">
+                  <div class="container-fluid">
+                     <div class="row column_title">
+                        <div class="col-md-12">
+                           <div class="page_title">
+                              <h2>Offres</h2>
+                           </div>
+                        </div>
+                     </div>
+                     <!-- row -->
+                     <div class="row">
+                        
+                        <!-- table section -->
+                              <div class="full graph_head">
+                                 <div class="heading1 margin_0">
+                                     <div class="white_shd full margin_bottom_30">
+                                    <h2>Offres</h2>
+                                 </div>
+                              </div>
+                               
+                              
+  <form action="add.php" method="POST" >
+   <table class="table table-dark">
             <tr>
-                    <td>
-                        <label for="id_avis">id_avis:
-                        </label>
-                    </td>
-                    <td><input  name="id_avis" id="id_avis" value="<?php echo $avis_offres['id_avis']; ?>"readonly></td>
-                </tr>
+                <td>
+                    <label for="nom">nom:
+                    </label>
+                </td>
+                <td><input type="text" name="nom" id="nom" onkeyup="nameValidation()"></td>
+                <td >
             
-                <tr>
-                    <td>
-                        <label for="nom">nom:
-                        </label>
-                    </td>
-                    <td><input type="text" name="nom" id="nom" value="<?php echo $avis_offres['nom']; ?>" maxlength="20"></td>
-                </tr>
+              <p style="color: red" id="nomEr"></p>
             
-
-                <tr>
-                    <td>
-                        <label for="email">email:
-                        </label>
-                    </td>
-                    <td>
-                        <input type="text" name="email" value="<?php echo $avis_offres['email']; ?>" id="email">
-                    </td>
-                </tr>
-
-
-                <tr>
-                    <td>
-                        <label for="message">message:
-                        </label>
-                    </td>
-                    <td>
-                        <input type="text" name="message" value="<?php echo $avis_offres['message']; ?>" id="message">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="id_offres">id_offres:
-                        </label>
-                    </td>
-                    <td>
-                        <input type="number" name="id_offres" value="<?php echo $avis_offres['id_offres']; ?>" id="id_offres">
-                    </td>
-                </tr>
+            </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="prenom">prenom:
+                    </label>
+                </td>
+                <td><input type="text" name="prenom" id="prenom" onkeyup="nameValidation1()"></td>
+                <td >
             
-                    <td>
-                        <input type="submit" value="Update">
-                    </td>
-                    <td>
-                        <input type="reset" value="Reset">
-                    </td>
-                </tr>
-            </table>
-        </form>
-   
-</body>
+              <p style="color: red" id="prenomEr"></p>
+            
+            </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="email">email:
+                    </label>
+                </td>
+                <td>
+                    <input type="text" name="email" id="email" >
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="code_promo">code_promo:
+                    </label>
+                </td>
+                <td>
+                    <input type="text" name="code_promo" id="code_promo">
+                </td>
+                <td >
+            
+              <p style="color: red" id="code_promoEr"></p>
+            
+            </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="plats">plats:
+                    </label>
+                </td>
+                <td>
+                    <input type="text" name="plats" id="plats">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="prix">prix:
+                    </label>
+                </td>
+                <td>
+                    <input type="number" name="prix" id="prix">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="remise">remise:
+                    </label>
+                </td>
+                <td>
+                    <input type="number" name="remise" id="remise">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="ajouter" >
+                </td>
+                <td>
+                    <input type="reset" value="Reset" >
+                </td>
+            </tr>
+        </table>
+    </form>
+                                          
+                                    
+                        
 
+                             
+                        <!-- table avis section -->
+                        <div class="col-md-6">
+                           <div class="white_shd full margin_bottom_30">
+                              <div class="full graph_head">
+                                 <div class="heading1 margin_0">
+                                    <h2>Avis_offres </h2>
+                                 </div>
+                              </div>
+                              <form action="add_avis.php" method="POST"name="inscription1">
+                              <div class="table_section padding_infor_info">
+                                 <div class="table-responsive-sm">
+                                    <table class="table table-dark">
+                                       <tr>
+                                          <td>
+                                              <label for="nom_c">nom_c:
+                                              </label>
+                                          </td>
+                                          <td><input type="text" name="nom_c" id="nom_c" onkeyup="nameValidation()"></td>
+                                          <td >
+            
+                                          <p style="color: red" id="nomE"></p>
+          
+                                             </td>
+                                      </tr>
+                                      
+                                          <td>
+                                              <label for="email">email:
+                                              </label>
+                                          </td>
+                                          <td>
+                                              <input type="text" name="email" id="email">
+                                          </td>
+                                      </tr>
+                                
+                                      <tr>
+                                          <td>
+                                              <label for="message">message:
+                                              </label>
+                                          </td>
+                                          <td>
+                                              <input type="message" name="message" id="message">
+                                          </td>
+                                      </tr>
+                                      <tr>
+                                          <td>
+                                              <input type="submit" value="ajouter" >
+                                          </td>
+                                          <td>
+                                              <input type="reset" value="Reset" >
+                                          </td>
+                                      </tr>
+                                 
+                                    </table>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>                                                  
+                                              </form>
+      <!-- jQuery -->
+      <script src="offresj.js"></script>
+      <script src="avis.js"></script>
+      <script src="js/jquery.min.js"></script>
+      <script src="js/popper.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <!-- wow animation -->
+      <script src="js/animate.js"></script>
+      <!-- select country -->
+      <script src="js/bootstrap-select.js"></script>
+      <!-- owl carousel -->
+      <script src="js/owl.carousel.js"></script> 
+      <!-- chart js -->
+      <script src="js/Chart.min.js"></script>
+      <script src="js/Chart.bundle.min.js"></script>
+      <script src="js/utils.js"></script>
+      <script src="js/analyser.js"></script>
+      <!-- nice scrollbar -->
+      <script src="js/perfect-scrollbar.min.js"></script>
+      <script>
+         var ps = new PerfectScrollbar('#sidebar');
+      </script>
+      <!-- fancy box js -->
+      <script src="js/jquery-3.3.1.min.js"></script>
+      <script src="js/jquery.fancybox.min.js"></script>
+      <!-- custom js -->
+      <script src="js/custom.js"></script>
+      <!-- calendar file css -->    
+      <script src="js/semantic.min.js"></script>
+      
+   </body>
 </html>

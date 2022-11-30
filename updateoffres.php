@@ -1,37 +1,43 @@
 <?php
 
-include '../controller/avis_offresC.php';
+include 'controller/offresC.php';
 
 $error = "";
 
 // create client
-$avis_offres = null;
+$offres = null;
 
 // create an instance of the controller
-$avis_offresC = new avis_offresC();
+$offresC = new offresC();
 if (
     isset($_POST["nom"]) &&
+    isset($_POST["prenom"]) &&
     isset($_POST["email"]) &&
-    isset($_POST["message"]) &&
-    isset($_POST["id_offres"])
-
+    isset($_POST["code_promo"]) &&
+    isset($_POST["plats"]) &&
+    isset($_POST["prix"]) &&
+    isset($_POST["remise"]) 
 ) {
     if (
         !empty($_POST["nom"]) &&
+        !empty($_POST["prenom"]) &&
         !empty($_POST["email"]) &&
-        !empty($_POST["message"]) &&
-        !empty($_POST["id_offres"]) 
-        
+        !empty($_POST["code_promo"]) &&
+        !empty($_POST["plats"]) &&
+        !empty($_POST["prix"]) &&
+        !empty($_POST["remise"])
     ) {
-        $avis_offres = new avis_offres(
+        $offres = new offres(
             $_POST['nom'],
+            $_POST['prenom'],
             $_POST['email'],
-            $_POST['message'],
-            $_POST['id_offres']
-            
+            $_POST['code_promo'],
+            $_POST['plats'],
+            $_POST['prix'],
+            $_POST['remise']
         );
-        $avis_offresC->updateavis_offres($avis_offres, $_POST["id_avis"]);
-        header('Location:Listavis_offres.php');
+        $offresC->updateoffres($offres, $_POST["id_offres"]);
+        header('Location:Listoffres.php');
     } else
         $error = "Missing information";
 }
@@ -196,36 +202,44 @@ if (
                </div>
                <!-- end topbar -->
             
-    <button><a href="Listavis_offres.php">Back to list</a></button>
+    <button><a href="Listoffres.php">Back to list</a></button>
 
     <div id="error">
         <?php echo $error; ?>
     </div>
 
     <?php
-    if (isset($_POST['id_avis'])) {
-        $avis_offres = $avis_offresC->showavis_offres($_POST['id_avis']);
+    if (isset($_POST['id_offres'])) {
+        $offres = $offresC->showoffres($_POST['id_offres']);
     }
     ?>
 
         <form action="" method="POST">
             <table>
+                
             <tr>
                     <td>
-                        <label for="id_avis">id_avis:
+                        <label for="id_offres">id_offres:
                         </label>
                     </td>
-                    <td><input  name="id_avis" id="id_avis" value="<?php echo $avis_offres['id_avis']; ?>"readonly></td>
+                    <td><input  name="id_offres" id="id_offres" value="<?php echo $offres['id_offres']; ?>" readonly></td>
                 </tr>
-            
                 <tr>
                     <td>
                         <label for="nom">nom:
                         </label>
                     </td>
-                    <td><input type="text" name="nom" id="nom" value="<?php echo $avis_offres['nom']; ?>" maxlength="20"></td>
+                    <td><input type="text" name="nom" id="nom" value="<?php echo $offres['nom']; ?>" maxlength="20"></td>
                 </tr>
             
+                <tr>
+                    <td>
+                        <label for="prenom">prenom:
+                        </label>
+                    </td>
+                    <td><input type="text" name="prenom" id="prenom" value="<?php echo $offres['prenom']; ?>" maxlength="20"></td>
+                </tr>
+
 
                 <tr>
                     <td>
@@ -233,29 +247,55 @@ if (
                         </label>
                     </td>
                     <td>
-                        <input type="text" name="email" value="<?php echo $avis_offres['email']; ?>" id="email">
+                        <input type="text" name="email" value="<?php echo $offres['email']; ?>" id="email">
                     </td>
                 </tr>
 
 
                 <tr>
                     <td>
-                        <label for="message">message:
+                        <label for="code_promo">code_promo:
                         </label>
                     </td>
                     <td>
-                        <input type="text" name="message" value="<?php echo $avis_offres['message']; ?>" id="message">
+                        <input type="number" name="code_promo" value="<?php echo $offres['code_promo']; ?>" id="code_promo">
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <label for="plats">plats:
+                        </label>
+                    </td>
+                    <td>
+                        <input type="text" name="plats" id="plats" value="<?php echo $offres['plats']; ?>">
+                    </td>
+                </tr>
+
+
+
+                <tr>
+                    <td>
+                        <label for="prix">prix:
+                        </label>
+                    </td>
+                    <td>
+                        <input type="number" name="prix" id="prix" value="<?php echo $offres['prix']; ?>">
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <label for="remise">remise:
+                        </label>
+                    </td>
+                    <td>
+                        <input type="number" name="remise" id="remise" value="<?php echo $offres['remise']; ?>">
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        <label for="id_offres">id_offres:
-                        </label>
-                    </td>
-                    <td>
-                        <input type="number" name="id_offres" value="<?php echo $avis_offres['id_offres']; ?>" id="id_offres">
-                    </td>
-                </tr>
             
                     <td>
                         <input type="submit" value="Update">

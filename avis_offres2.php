@@ -5,13 +5,15 @@ class avis_offres
     private ?string $nom = null;
     private ?string $email = null;
     private ?string $message = null;
+    private ?int $id_offres = null;
   
 
-    public function __construct($n, $e,$me)
+    public function __construct($n, $e,$me,$id)
     {   
         $this->nom = $n;
         $this->email = $e;
         $this->message= $me; 
+        $this->id_offres= $id; 
     }
     
     /**
@@ -73,6 +75,26 @@ class avis_offres
     public function setmessage($message)
     {
         $this->message= $message;
+
+        return $this;
+    }
+    /**
+     * Get the value of address
+     */
+    public function getid_offres()
+    {
+        return $this->id_offres;
+    }
+
+    /**
+     * Set the value of address
+     *
+     * @return  self
+     */
+
+    public function setid_offres($id_offres)
+    {
+        $this->id_offres= $id_offres;
 
         return $this;
     }

@@ -1,43 +1,8 @@
 <?php
-
-include '../controller/avis_offresC.php';
-
-$error = "";
-
-// create client
-$avis_offres = null;
-
-// create an instance of the controller
-$avis_offresC = new avis_offresC();
-if (
-    isset($_POST["nom"]) &&
-    isset($_POST["email"]) &&
-    isset($_POST["message"]) &&
-    isset($_POST["id_offres"])
-
-) {
-    if (
-        !empty($_POST["nom"]) &&
-        !empty($_POST["email"]) &&
-        !empty($_POST["message"]) &&
-        !empty($_POST["id_offres"]) 
-        
-    ) {
-        $avis_offres = new avis_offres(
-            $_POST['nom'],
-            $_POST['email'],
-            $_POST['message'],
-            $_POST['id_offres']
-            
-        );
-        $avis_offresC->updateavis_offres($avis_offres, $_POST["id_avis"]);
-        header('Location:Listavis_offres.php');
-    } else
-        $error = "Missing information";
-}
+include '../controller/offresC.php';
+$offresC = new offresC();
+$list = $offresC->listoffres();
 ?>
-<html lang="en">
-
 <html>
 
 <head>
@@ -58,7 +23,7 @@ if (
       <!-- bootstrap css -->
       <link rel="stylesheet" href="css/bootstrap.min.css" />
       <!-- site css -->
-      <link rel="stylesheet" href="style3.css" />
+      <link rel="stylesheet" href="style2.css" />
       <!-- responsive css -->
       <link rel="stylesheet" href="css/responsive.css" />
       <!-- color css -->
@@ -77,7 +42,7 @@ if (
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
       <![endif]-->
-      <script src="js/offres.js"></script>
+      
    </head>
    <body class="inner_page tables_page">
       <div class="full_container">
@@ -194,79 +159,92 @@ if (
                      </div>
                   </nav>
                </div>
-               <!-- end topbar -->
+
+               <form action="/form/submit" method="GET"> 
+  <input type="text" name="text" class="search" placeholder="chercher le nom du client!">
+  <input type="submit" name="submit" class="submit" value="rechercher">
+</form>
+    
+       <center> <h1>gestion des offres </h1></center>
+   <center> <table border=3 ></center>
+        <tr>
+           
+            <th>nom</th>
+            <th>prenom</th>
+            <th>email</th>
+            <th>code_promo</th>
+            <th>plats</th>
+            <th>prix</th>
+            <th>remise</th>
+            <th>update</th>
+            <th>Delete</th>
             
-    <button><a href="Listavis_offres.php">Back to list</a></button>
-
-    <div id="error">
-        <?php echo $error; ?>
-    </div>
-
-    <?php
-    if (isset($_POST['id_avis'])) {
-        $avis_offres = $avis_offresC->showavis_offres($_POST['id_avis']);
-    }
-    ?>
-
-        <form action="" method="POST">
-            <table>
+        </tr>
+        <?php
+        foreach ($list as $offres) {
+        ?>
             <tr>
-                    <td>
-                        <label for="id_avis">id_avis:
-                        </label>
-                    </td>
-                    <td><input  name="id_avis" id="id_avis" value="<?php echo $avis_offres['id_avis']; ?>"readonly></td>
-                </tr>
-            
-                <tr>
-                    <td>
-                        <label for="nom">nom:
-                        </label>
-                    </td>
-                    <td><input type="text" name="nom" id="nom" value="<?php echo $avis_offres['nom']; ?>" maxlength="20"></td>
-                </tr>
-            
-
-                <tr>
-                    <td>
-                        <label for="email">email:
-                        </label>
-                    </td>
-                    <td>
-                        <input type="text" name="email" value="<?php echo $avis_offres['email']; ?>" id="email">
-                    </td>
-                </tr>
-
-
-                <tr>
-                    <td>
-                        <label for="message">message:
-                        </label>
-                    </td>
-                    <td>
-                        <input type="text" name="message" value="<?php echo $avis_offres['message']; ?>" id="message">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="id_offres">id_offres:
-                        </label>
-                    </td>
-                    <td>
-                        <input type="number" name="id_offres" value="<?php echo $avis_offres['id_offres']; ?>" id="id_offres">
-                    </td>
-                </tr>
-            
-                    <td>
-                        <input type="submit" value="Update">
-                    </td>
-                    <td>
-                        <input type="reset" value="Reset">
-                    </td>
-                </tr>
-            </table>
-        </form>
-   
+                <td><?= $offres['nom']; ?></td>
+                <td><?= $offres['prenom']; ?></td>
+                <td><?= $offres['email']; ?></td>
+                <td><?= $offres['code_promo']; ?></td>
+                <td><?= $offres['plats']; ?></td>
+                <td><?= $offres['prix']; ?></td>
+                <td><?= $offres['remise']; ?></td>
+                <td>
+                    <form method="POST" action="updateoffres.php">
+                        <input type="submit" name="update" value="Update" >
+                        <input type="hidden" value=<?PHP echo $offres['id_offres']; ?> name="id_offres">
+                    </form>
+                </td>
+                <td>
+                    <a href="deleteoffres.php?id_offres=<?php echo $offres['id_offres']; ?>">Supprimer</a>
+                </td>
+            </tr>
+        <?php
+        }
+        ?>
+    </table>
+    <script>
+            $(document).ready(function() {
+                $("#gfg").on("keyup", function() {
+                    var value = $(this).val().toLowerCase();
+                    $("#geeks tr").filter(function() {
+                        $(this).toggle($(this).text()
+                        .toLowerCase().indexOf(value) > -1)
+                    });
+                });
+            });
+        </script>
+    <!-- jQuery -->
+    <script src="offresj.js"></script>
+      <script src="js/jquery.min.js"></script>
+      <script src="js/popper.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <!-- wow animation -->
+      <script src="js/animate.js"></script>
+      <!-- select country -->
+      <script src="js/bootstrap-select.js"></script>
+      <!-- owl carousel -->
+      <script src="js/owl.carousel.js"></script> 
+      <!-- chart js -->
+      <script src="js/Chart.min.js"></script>
+      <script src="js/Chart.bundle.min.js"></script>
+      <script src="js/utils.js"></script>
+      <script src="js/analyser.js"></script>
+      <!-- nice scrollbar -->
+      <script src="js/perfect-scrollbar.min.js"></script>
+      <script>
+         var ps = new PerfectScrollbar('#sidebar');
+      </script>
+      <!-- fancy box js -->
+      <script src="js/jquery-3.3.1.min.js"></script>
+      <script src="js/jquery.fancybox.min.js"></script>
+      <!-- custom js -->
+      <script src="js/custom.js"></script>
+      <!-- calendar file css -->    
+      <script src="js/semantic.min.js"></script>
+      
 </body>
 
 </html>

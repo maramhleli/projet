@@ -156,8 +156,8 @@
                   </nav>
                </div>
                <!-- end topbar -->
-               <!-- dashboard inner -->
-               <div class="midde_cont">
+              <!-- dashboard inner -->
+              <div class="midde_cont">
                   <div class="container-fluid">
                      <div class="row column_title">
                         <div class="col-md-12">
@@ -178,21 +178,31 @@
                               </div>
                                
                               
-  <form action="" method="POST">
+  <form action="add.php" method="POST" >
    <table class="table table-dark">
             <tr>
                 <td>
                     <label for="nom">nom:
                     </label>
                 </td>
-                <td><input type="text" name="nom" id="nom" maxlength="20"></td>
+                <td><input type="text" name="nom" id="nom" onkeyup="nameValidation()"></td>
+                <td >
+            
+              <p style="color: red" id="nomEr"></p>
+            
+            </td>
             </tr>
             <tr>
                 <td>
                     <label for="prenom">prenom:
                     </label>
                 </td>
-                <td><input type="text" name="prenom" id="prenom" maxlength="20"></td>
+                <td><input type="text" name="prenom" id="prenom" onkeyup="nameValidation1()"></td>
+                <td >
+            
+              <p style="color: red" id="prenomEr"></p>
+            
+            </td>
             </tr>
             <tr>
                 <td>
@@ -200,7 +210,7 @@
                     </label>
                 </td>
                 <td>
-                    <input type="text" name="email" id="email">
+                    <input type="text" name="email" id="email" >
                 </td>
             </tr>
             <tr>
@@ -211,6 +221,11 @@
                 <td>
                     <input type="text" name="code_promo" id="code_promo">
                 </td>
+                <td >
+            
+              <p style="color: red" id="code_promoEr"></p>
+            
+            </td>
             </tr>
             <tr>
                 <td>
@@ -250,8 +265,7 @@
         </table>
     </form>
                                           
-                                    
-                        
+                          
 
                              
                         <!-- table avis section -->
@@ -262,24 +276,30 @@
                                     <h2>Avis_offres </h2>
                                  </div>
                               </div>
-                              <form action="add_avis.php" method="POST">
+                              <form action="add_avis.php" method="POST"name="inscription">
                               <div class="table_section padding_infor_info">
                                  <div class="table-responsive-sm">
+                              
                                     <table class="table table-dark">
                                        <tr>
                                           <td>
                                               <label for="nom">nom:
                                               </label>
                                           </td>
-                                          <td><input type="text" name="nom" id="nom" maxlength="20"></td>
-                                      </tr>
+                                          <td><input type="text" name="nom" id="nom"  onkeyup="nameValidation()"></td>
+                                          <td >
+            
+                                          <p style="color: red" id="nomEr"></p>
+          
+                                             </td>
+                                       </tr>
                                       
                                           <td>
                                               <label for="email">email:
                                               </label>
                                           </td>
                                           <td>
-                                              <input type="text" name="email" id="email">
+                                              <input type="text" name="email" id="email" >
                                           </td>
                                       </tr>
                                 
@@ -290,6 +310,15 @@
                                           </td>
                                           <td>
                                               <input type="message" name="message" id="message">
+                                          </td>
+                                      </tr>
+                                      <tr>
+                                          <td>
+                                              <label for="id_offres">id_offres:
+                                              </label>
+                                          </td>
+                                          <td>
+                                              <input type="number" name="id_offres" id="id_offres">
                                           </td>
                                       </tr>
                                       <tr>
@@ -308,7 +337,10 @@
                         </div>  
                         </form>                                                
                 
+                       
       <!-- jQuery -->
+      <script src="offresj.js"></script>
+      <script src="avis.js"></script>
       <script src="js/jquery.min.js"></script>
       <script src="js/popper.min.js"></script>
       <script src="js/bootstrap.min.js"></script>

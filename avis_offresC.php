@@ -33,7 +33,7 @@ class avis_offresC
     function addavis_offres($avis_offres)
     {
         $sql = "INSERT INTO avis_offres  
-        VALUES (NULL, :n,:em, :me)";
+        VALUES (NULL, :n,:em, :me,:id)";
         $db = config::getConnexion();
         try {
             $query = $db->prepare($sql);
@@ -41,6 +41,7 @@ class avis_offresC
                 'n' => $avis_offres->getnom(),
                 'em' => $avis_offres->getemail(),
                 'me' => $avis_offres->getmessage(),
+                'id' => $avis_offres->getid_offres(),
                
             ]);
         } catch (Exception $e) {
@@ -56,14 +57,16 @@ class avis_offresC
                 'UPDATE avis_offres SET 
                     nom = :nom, 
                     email = :email,
-                    message= :message  
+                    message= :message,
+                    id_offres= :id_offres  
                 WHERE id_avis= :id_avis'
             );
             $query->execute([
                 'id_avis' => $id_avis,
                 'nom' => $avis_offres->getnom(),
                 'email' => $avis_offres->getemail(),
-                'message' => $avis_offres->getmessage()
+                'message' => $avis_offres->getmessage(),
+                'id_offres' => $avis_offres->getid_offres()
             ]);
             echo $query->rowCount() . " records UPDATED successfully <br>";
         } catch (PDOException $e) {
@@ -84,4 +87,5 @@ class avis_offresC
             die('Error: ' . $e->getMessage());
         }
     }
+   
 }
