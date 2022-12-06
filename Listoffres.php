@@ -3,170 +3,91 @@ include '../controller/offresC.php';
 $offresC = new offresC();
 $list = $offresC->listoffres();
 ?>
-<html>
+<html lang="en">
 
 <head>
-      
-      <!-- basic -->
-      <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <!-- mobile metas -->
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-      <!-- site metas -->
-      <title>TMAKHMIKHA</title>
-      <meta name="keywords" content="">
-      <meta name="description" content="">
-      <meta name="author" content="">
-      <!-- site icon -->
-      <link rel="icon" href="images/fevicon.png" type="image/png" />
-      <!-- bootstrap css -->
-      <link rel="stylesheet" href="css/bootstrap.min.css" />
-      <!-- site css -->
-      <link rel="stylesheet" href="style2.css" />
-      <!-- responsive css -->
-      <link rel="stylesheet" href="css/responsive.css" />
-      <!-- color css -->
-      <link rel="stylesheet" href="css/colors.css" />
-      <!-- select bootstrap -->
-      <link rel="stylesheet" href="css/bootstrap-select.css" />
-      <!-- scrollbar css -->
-      <link rel="stylesheet" href="css/perfect-scrollbar.css" />
-      <!-- custom css -->
-      <link rel="stylesheet" href="css/custom.css" />
-      <!-- calendar file css -->
-      <link rel="stylesheet" href="js/semantic.min.css" />
-      <!-- fancy box js -->
-      <link rel="stylesheet" href="css/jquery.fancybox.css" />
-      <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-      <![endif]-->
-      
-   </head>
-   <body class="inner_page tables_page">
-      <div class="full_container">
-         <div class="inner_container">
-            <!-- Sidebar  -->
-            <nav id="sidebar">
-               <div class="sidebar_blog_1">
-                  <div class="sidebar-header">
-                     <div class="logo_section">
-                        <a href="index.html"><img class="logo_icon img-responsive" src="images/logo/logo_icon.png" alt="#" /></a>
-                     </div>
-                  </div>
-                  <div class="sidebar_user_info">
-                     <div class="icon_setting"></div>
-                     <div class="user_profle_side">
-                        <div class="user_img"><img class="img-responsive" src="images/layout_img/user_img.jpg" alt="#" /></div>
-                        <div class="user_info">
-                           <h6>Admin</h6>
-                           <p><span class="online_animation"></span> Online</p>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="sidebar_blog_2">
-                  <h4>General</h4>
-                  <ul class="list-unstyled components">
-                     <li class="active">
-                        <a href="#dashboard" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-dashboard yellow_color"></i> <span>Dashboard</span></a>
-                        <ul class="collapse list-unstyled" id="dashboard">
-                           <li>
-                              <a href="dashboard.html">> <span>Default Dashboard</span></a>
-                           </li>
-                           <li>
-                              <a href="dashboard_2.html">> <span>Dashboard style 2</span></a>
-                           </li>
-                        </ul>
-                     </li>
-                     <li><a href="widgets.html"><i class="fa fa-clock-o orange_color"></i> <span>Widgets</span></a></li>
-                     <li>
-                        <a href="#element" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-diamond purple_color"></i> <span>Elements</span></a>
-                        <ul class="collapse list-unstyled" id="element">
-                           <li><a href="general_elements.html">> <span>General Elements</span></a></li>
-                           <li><a href="media_gallery.html">> <span>Media Gallery</span></a></li>
-                           <li><a href="icons.html">> <span>Icons</span></a></li>
-                           <li><a href="invoice.html">> <span>Invoice</span></a></li>
-                        </ul>
-                     </li>
-                     <li><a href="tables.html"><i class="fa fa-table purple_color2"></i> <span>Offres</span></a></li>
-                     <li>
-                        <a href="#apps" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-object-group blue2_color"></i> <span>Apps</span></a>
-                        <ul class="collapse list-unstyled" id="apps">
-                           <li><a href="email.html">> <span>Email</span></a></li>
-                           <li><a href="calendar.html">> <span>Calendar</span></a></li>
-                           <li><a href="media_gallery.html">> <span>Media Gallery</span></a></li>
-                        </ul>
-                     </li>
-                     <li><a href="price.html"><i class="fa fa-briefcase blue1_color"></i> <span>Pricing Tables</span></a></li>
-                     <li>
-                        <a href="contact.html">
-                        <i class="fa fa-paper-plane red_color"></i> <span>Contact</span></a>
-                     </li>
-                     <li class="active">
-                        <a href="#additional_page" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-clone yellow_color"></i> <span>Additional Pages</span></a>
-                        <ul class="collapse list-unstyled" id="additional_page">
-                           <li>
-                              <a href="profile.html">> <span>Profile</span></a>
-                           </li>
-                           
-                           <li>
-                              <a href="login.html">> <span>Login</span></a>
-                           </li>
-                           <li>
-                              <a href="404_error.html">> <span>404 Error</span></a>
-                           </li>
-                        </ul>
-                     </li>
-                     <li><a href="map.html"><i class="fa fa-map purple_color2"></i> <span>Map</span></a></li>
-                     <li><a href="charts.html"><i class="fa fa-bar-chart-o green_color"></i> <span>Charts</span></a></li>
-                     <li><a href="settings.html"><i class="fa fa-cog yellow_color"></i> <span>Settings</span></a></li>
-                  </ul>
-               </div>
-            </nav>
-            <!-- end sidebar -->
-            <!-- right content -->
-            <div id="content">
-               <!-- topbar -->
-               <div class="topbar">
-                  <nav class="navbar navbar-expand-lg navbar-light">
-                     <div class="full">
-                        <button type="button" id="sidebarCollapse" class="sidebar_toggle"><i class="fa fa-bars"></i></button>
-                        <div class="logo_section">
-                           <a href="index.html"><img class="img-responsive" src="images/logo/logo.png" alt="#" /></a>
-                        </div>
-                        <div class="right_topbar">
-                           <div class="icon_info">
-                              <ul>
-                                 <li><a href="#"><i class="fa fa-bell-o"></i><span class="badge">2</span></a></li>
-                                 <li><a href="#"><i class="fa fa-question-circle"></i></a></li>
-                                 <li><a href="#"><i class="fa fa-envelope-o"></i><span class="badge">3</span></a></li>
-                              </ul>
-                              <ul class="user_profile_dd">
-                                 <li>
-                                    <a class="dropdown-toggle" data-toggle="dropdown"><img class="img-responsive rounded-circle" src="images/layout_img/user_img.jpg" alt="#" /><span class="name_user">John David</span></a>
-                                    <div class="dropdown-menu">
-                                       <a class="dropdown-item" href="profile.html">My Profile</a>
-                                       <a class="dropdown-item" href="settings.html">Settings</a>
-                                       <a class="dropdown-item" href="help.html">Help</a>
-                                       <a class="dropdown-item" href="#"><span>Log Out</span> <i class="fa fa-sign-out"></i></a>
-                                    </div>
-                                 </li>
-                              </ul>
-                           </div>
-                        </div>
-                     </div>
-                  </nav>
-               </div>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-               <form action="/form/submit" method="GET"> 
-  <input type="text" name="text" class="search" placeholder="chercher le nom du client!">
-  <input type="submit" name="submit" class="submit" value="rechercher">
-</form>
+  <title>Tmakhmikha </title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+ 
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style2.css" rel="stylesheet">
+   <!-- ======= Top Bar ======= -->
+   <div id="topbar" class="d-flex align-items-center fixed-top">
+    <div class="container d-flex justify-content-center justify-content-md-between">
+
+      <div class="contact-info d-flex align-items-center">
+        <i class="bi bi-clock d-flex align-items-center ms-4"><span> 7/7: 07:00 - 00:00</span></i>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-cente">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-lg-between">
+    
+      <h1 class="logo me-auto me-lg-2"><fon face ="2660.ttf"></fon><a href="index.html">Tmakhmikha</a></h1>
+    
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Acceuil</a></li>
+          <li><a class="nav-link scrollto" href="#A propos">A propos</a></li>
+          <li><a class="nav-link scrollto" href="#menu">Menu</a></li>
+          <li><a class="nav-link scrollto" href="#offres">offres</a></li>
+          <li><a class="nav-link scrollto" href="#reclamation">reclamation</a></li>
+          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+      <a href="#passer commande" class="book-a-table-btn scrollto d-none d-lg-flex">passer commande</a>
+
+    </div>
+  </header><!-- End Header -->
+
+  
+</head>
+
+<body>
+
+  <!-- ======= Top Bar ======= -->
+  <div id="topbar" class="d-flex align-items-center fixed-top">
+    <div class="container d-flex justify-content-center justify-content-md-between">
+
+      <div class="contact-info d-flex align-items-center">
+        <i class="bi bi-clock d-flex align-items-center ms-4"><span> 7/7: 07:00 - 00:00</span></i>
+      </div>
+
+    </div>
+  </div>
+
+  
+  <div class="full graph_head">
     
        <center> <h1>gestion des offres </h1></center>
-   <center> <table border=3 ></center>
+   <center> <table border=3 class="table table-dark table-striped"></center>
         <tr>
            
             <th>nom</th>
@@ -178,7 +99,6 @@ $list = $offresC->listoffres();
             <th>remise</th>
             <th>update</th>
             <th>Delete</th>
-            
         </tr>
         <?php
         foreach ($list as $offres) {
@@ -193,58 +113,105 @@ $list = $offresC->listoffres();
                 <td><?= $offres['remise']; ?></td>
                 <td>
                     <form method="POST" action="updateoffres.php">
-                        <input type="submit" name="update" value="Update" >
+                    <div class="button_block"><button type="submit" class="btn cur-p btn-outline-warning" >update</button></div>
+                        
                         <input type="hidden" value=<?PHP echo $offres['id_offres']; ?> name="id_offres">
                     </form>
                 </td>
                 <td>
-                    <a href="deleteoffres.php?id_offres=<?php echo $offres['id_offres']; ?>">Supprimer</a>
+                    <a href="deleteoffres.php?id_offres=<?php echo $offres['id_offres']; ?>"class="btn cur-p btn-outline-warning">delete</a>
                 </td>
             </tr>
         <?php
         }
         ?>
     </table>
-    <script>
-            $(document).ready(function() {
-                $("#gfg").on("keyup", function() {
-                    var value = $(this).val().toLowerCase();
-                    $("#geeks tr").filter(function() {
-                        $(this).toggle($(this).text()
-                        .toLowerCase().indexOf(value) > -1)
-                    });
-                });
-            });
-        </script>
-    <!-- jQuery -->
-    <script src="offresj.js"></script>
-      <script src="js/jquery.min.js"></script>
-      <script src="js/popper.min.js"></script>
-      <script src="js/bootstrap.min.js"></script>
-      <!-- wow animation -->
-      <script src="js/animate.js"></script>
-      <!-- select country -->
-      <script src="js/bootstrap-select.js"></script>
-      <!-- owl carousel -->
-      <script src="js/owl.carousel.js"></script> 
-      <!-- chart js -->
-      <script src="js/Chart.min.js"></script>
-      <script src="js/Chart.bundle.min.js"></script>
-      <script src="js/utils.js"></script>
-      <script src="js/analyser.js"></script>
-      <!-- nice scrollbar -->
-      <script src="js/perfect-scrollbar.min.js"></script>
-      <script>
-         var ps = new PerfectScrollbar('#sidebar');
-      </script>
-      <!-- fancy box js -->
-      <script src="js/jquery-3.3.1.min.js"></script>
-      <script src="js/jquery.fancybox.min.js"></script>
-      <!-- custom js -->
-      <script src="js/custom.js"></script>
-      <!-- calendar file css -->    
-      <script src="js/semantic.min.js"></script>
-      
+    <center>
+    <form method="POST" action="addoffres.php">
+                    <div class="button_block"><button type="submit" class="btn cur-p btn-outline-warning" >ajouter un avis</button></div>
+                        
+                    </form>
+  <center>
+</body>
+ <!-- ======= Footer ======= -->
+ <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6">
+            <div class="footer-info">
+              <h3>Tmakhmikha</h3>
+              <p>
+                A108 tunis Street <br>
+                NY 535022, USA<br><br>
+                <strong>Phone:</strong> +216 5589 55488 55<br>
+                <strong>Email:</strong> info@example.com<br>
+              </p>
+              <div class="social-links mt-3">
+                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+            </ul>
+          </div>
+
+          
+
+          <div class="col-lg-4 col-md-6 footer-newsletter">
+            <h4>Our Newsletter</h4>
+            <p>vous trouvez que les plats délicieux!</p>
+            <form action="" method="post">
+              <input type="email" name="email"><input type="submit" value="S'inscrire">
+            </form>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Tmakhmikha</span></strong>
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/restaurantly-restaurant-template/ -->
+        Designed by <a href="https://bootstrapmade.com/">ELITE groupe</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/offres.js"></script>
 </body>
 
 </html>

@@ -15,7 +15,6 @@ if (
     isset($_POST["message"]) &&
     isset($_POST["id_offres"]) 
 
-
        
 ) {
     if (

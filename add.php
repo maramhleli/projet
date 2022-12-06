@@ -40,7 +40,17 @@ if (
         
         );
         $offresC->addoffres($offres);
-        header('Location:Listoffres.php');
+        $receiver =  $_POST['email'];
+$subject = "Email Test via PHP using Localhost";
+$body = "votre offre est ajouté  ";
+$sender = "From:ameni.hosni@esprit.tn";
+if(mail($receiver, $subject, $body, $sender)){
+    echo "Email sent successfully to $receiver";
+}else{
+    echo "Sorry, failed while sending mail!";
+}
+
+       header('Location:Listoffres.php');
     } else
         $error = "Missing information";
 }
