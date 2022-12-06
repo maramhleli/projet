@@ -94,7 +94,7 @@ class avis_offres
 
     public function setid_offres($id_offres)
     {
-        $this->id_offres= $id_offres;
+        $this->id_offres= $message;
 
         return $this;
     }

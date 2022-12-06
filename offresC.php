@@ -95,16 +95,4 @@ class offresC
             die('Error: ' . $e->getMessage());
         }
     }
-    function rechercher($nom)
-    {
-		$sql="SELECT * from offres where nom=$nom";
-		$db = config::getConnexion();
-		try{
-		$liste=$db->query($sql);
-		return $liste;
-		}
-        catch (Exception $e){
-            die('Erreur: '.$e->getMessage());
-        }
-    }
 }

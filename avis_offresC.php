@@ -42,7 +42,6 @@ class avis_offresC
                 'em' => $avis_offres->getemail(),
                 'me' => $avis_offres->getmessage(),
                 'id' => $avis_offres->getid_offres(),
-               
             ]);
         } catch (Exception $e) {
             echo 'Error: ' . $e->getMessage();
@@ -58,7 +57,7 @@ class avis_offresC
                     nom = :nom, 
                     email = :email,
                     message= :message,
-                    id_offres= :id_offres  
+                    id_offres=:id_offres  
                 WHERE id_avis= :id_avis'
             );
             $query->execute([
@@ -87,5 +86,4 @@ class avis_offresC
             die('Error: ' . $e->getMessage());
         }
     }
-   
 }
